@@ -1,0 +1,58 @@
+/* ポケモン図鑑アプリのメインスタイル */
+.App {
+  min-height: 100vh;
+  background: #2d2d2d;
+  font-family: 'Arial', sans-serif;
+}
+
+/* グローバルスタイルのリセット */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #2d2d2d;
+  color: rgb(255, 255, 255);
+}
+
+/* スクロールバーのスタイリング */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2d2d2d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dc0a2d;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b30824;
+}
+
+/* ボタンの基本スタイル */
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* 入力フィールドの基本スタイル */
+input, select, textarea {
+  font-family: inherit;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .App {
+    padding: 0;
+  }
+}

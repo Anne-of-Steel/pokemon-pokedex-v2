@@ -1,0 +1,41 @@
+/* ポケモン図鑑アプリのグローバルスタイル */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  background: #2d2d2d;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* リンクのスタイル */
+a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* フォーカス時のアウトライン */
+*:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* 選択時のスタイル */
+::selection {
+  background: #dc0a2d;
+  color: white;
+}

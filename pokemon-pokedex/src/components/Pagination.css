@@ -1,0 +1,136 @@
+.pagination-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pagination-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  background: #dc0a2d;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: #b30824;
+}
+
+.pagination-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 4px;
+}
+
+.page-number {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #dc0a2d;
+  background: white;
+  color: #dc0a2d;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-number:hover {
+  background: #dc0a2d;
+  color: white;
+}
+
+.page-number.active {
+  background: #dc0a2d;
+  color: white;
+  transform: scale(1.1);
+}
+
+.pagination-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.page-info {
+  color: #666;
+  font-weight: bold;
+}
+
+.items-per-page {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.items-per-page label {
+  color: #666;
+  font-weight: bold;
+}
+
+.items-per-page select {
+  padding: 6px 12px;
+  border: 2px solid #dc0a2d;
+  border-radius: 8px;
+  background: white;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.items-per-page select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .pagination-controls {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .page-numbers {
+    order: -1;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+  
+  .pagination-info {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .page-number {
+    width: 35px;
+    height: 35px;
+    font-size: 12px;
+  }
+}
+
+
