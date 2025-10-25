@@ -238,32 +238,25 @@ const PokemonList = () => {
         <SearchBar
           searchTerm={searchTerm}
           onSearchChange={handleSearchChange}
+          onFilterClick={() => setIsFilterModalOpen(true)}
+          activeFilterCount={getActiveFilterTags().length}
         />
         
-        <div className="filter-controls">
-          <button 
-            className="filter-button"
-            onClick={() => setIsFilterModalOpen(true)}
-          >
-            🔍 フィルタ {getActiveFilterTags().length > 0 && `(${getActiveFilterTags().length})`}
-          </button>
-          
-          {getActiveFilterTags().length > 0 && (
-            <div className="active-filter-tags">
-              {getActiveFilterTags().map((tag, index) => (
-                <span key={index} className="filter-tag" style={{ backgroundColor: tag.color }}>
-                  {tag.label}
-                  <button 
-                    className="remove-tag"
-                    onClick={() => handleRemoveFilterTag(tag.type, tag.value)}
-                  >
-                    ×
-                  </button>
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
+        {getActiveFilterTags().length > 0 && (
+          <div className="active-filter-tags">
+            {getActiveFilterTags().map((tag, index) => (
+              <span key={index} className="filter-tag" style={{ backgroundColor: tag.color }}>
+                {tag.label}
+                <button 
+                  className="remove-tag"
+                  onClick={() => handleRemoveFilterTag(tag.type, tag.value)}
+                >
+                  ×
+                </button>
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       {detailsLoading && (
