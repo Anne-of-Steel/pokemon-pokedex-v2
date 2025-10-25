@@ -7,7 +7,7 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/pokemon-pokedex-v2">
       <div className="App">
         <Routes>
           <Route path="/" element={<PokemonList />} />
