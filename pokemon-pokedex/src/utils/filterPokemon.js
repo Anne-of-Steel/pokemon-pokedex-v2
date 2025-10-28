@@ -10,12 +10,15 @@ export const filterPokemons = (pokemons, conditions) => {
   if (!conditions) return pokemons;
   
   return pokemons.filter(pokemon => {
-    // 1. タイプフィルタ（OR条件）⭐重要: 仕様書v3で変更
+    // 1. タイプフィルタ（AND条件）
+    // 選択されたすべてのタイプを含むポケモンのみを返す
     if (conditions.types && conditions.types.length > 0) {
-      const hasMatchingType = pokemon.types.some(typeObj =>
-        conditions.types.includes(typeObj.type.name)
+      const pokemonTypes = pokemon.types.map(typeObj => typeObj.type.name);
+      // すべての選択されたタイプがポケモンに含まれているかチェック
+      const hasAllTypes = conditions.types.every(selectedType =>
+        pokemonTypes.includes(selectedType)
       );
-      if (!hasMatchingType) return false;
+      if (!hasAllTypes) return false;
     }
     
     // 2. 身長フィルタ

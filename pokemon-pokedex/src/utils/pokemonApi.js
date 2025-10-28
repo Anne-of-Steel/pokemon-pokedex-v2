@@ -47,6 +47,9 @@ export const fetchPokemonDetails = async (pokemonList, startIndex, endIndex) => 
         entry => entry.language.name === 'ja'
       )?.flavor_text.replace(/\n/g, '') || '';
       
+      // 登場シリーズを取得
+      const generation = species.generation.name;
+      
       return {
         id: pokemon.id,
         name: pokemon.name,
@@ -57,7 +60,8 @@ export const fetchPokemonDetails = async (pokemonList, startIndex, endIndex) => 
         sprites: pokemon.sprites,
         stats: pokemon.stats,
         description: japaneseDescription,
-        evolutionChainUrl: species.evolution_chain?.url
+        evolutionChainUrl: species.evolution_chain?.url,
+        generation: generation
       };
     });
   } catch (error) {

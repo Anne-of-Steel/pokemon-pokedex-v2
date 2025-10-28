@@ -86,7 +86,7 @@ const FilterModal = ({ isOpen, onClose, initialFilters, onApplyFilters }) => {
         <div className="filter-modal-body">
           {/* タイプフィルタ */}
           <div className="filter-section">
-            <h3>タイプ</h3>
+            <h3>タイプ（すべて含む）</h3>
             <div className="type-grid">
               {Object.entries(TYPE_TRANSLATIONS).map(([englishType, japaneseType]) => (
                 <label key={englishType} className="type-checkbox">
@@ -151,9 +151,9 @@ const FilterModal = ({ isOpen, onClose, initialFilters, onApplyFilters }) => {
             </div>
           </div>
           
-          {/* 出現シリーズフィルタ（ORロジック） */}
+          {/* 出現シリーズフィルタ */}
           <div className="filter-section">
-            <h3>出現シリーズ（いずれかに該当）</h3>
+            <h3>出現シリーズ</h3>
             <div className="generation-list">
               {Object.entries(GENERATION_TRANSLATIONS).map(([key, value]) => (
                 <label key={key} className="generation-checkbox">
