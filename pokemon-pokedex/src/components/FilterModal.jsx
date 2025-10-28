@@ -84,6 +84,7 @@ const FilterModal = ({ isOpen, onClose, initialFilters, onApplyFilters }) => {
         </div>
         
         <div className="filter-modal-body">
+          {/* Filter updated */}
           {/* タイプフィルタ */}
           <div className="filter-section">
             <h3>タイプ（すべて含む）</h3>
