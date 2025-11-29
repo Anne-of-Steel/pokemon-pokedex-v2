@@ -95,11 +95,12 @@ export const fetchPokemonFullDetails = async (pokemonId) => {
     let evolutionChain = [];
     if (species.evolution_chain) {
       const evolutionRes = await axios.get(species.evolution_chain.url);
-      evolutionChain = parseEvolutionChain(evolutionRes.data.chain);
+      evolutionChain = await parseEvolutionChain(evolutionRes.data.chain);
     }
     
-    // 登場シリーズを取得
-    const games = species.generation.name;
+    // 登場シリーズを取得（日本語化）
+    const generation = species.generation.name;
+    const games = species.game_indices.map(game => game.version.name);
     
     return {
       id: pokemon.id,
@@ -113,7 +114,8 @@ export const fetchPokemonFullDetails = async (pokemonId) => {
       abilities: pokemon.abilities,
       description: japaneseDescription,
       evolutionChain,
-      generation: games,
+      generation: generation,
+      games: games,
       genus: species.genera.find(g => g.language.name === 'ja')?.genus || ''
     };
   } catch (error) {

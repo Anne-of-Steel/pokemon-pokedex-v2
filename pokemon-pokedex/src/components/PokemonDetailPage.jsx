@@ -3,7 +3,7 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight, FaStar, FaArrowLeft } from 'react-icons/fa';
 import { usePokemonDetail } from '../hooks/usePokemonData';
 import { useFavorites } from '../hooks/useFavorites';
-import { translateType, translateStat, getTypeColor, getGenerationLabel } from '../utils/translatePokemon';
+import { translateType, translateStat, getTypeColor, getGenerationLabel, translateGameName } from '../utils/translatePokemon';
 import './PokemonDetailPage.css';
 
 const PokemonDetailPage = () => {
@@ -11,7 +11,7 @@ const PokemonDetailPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { pokemon, loading, error } = usePokemonDetail(id);
-  const { favorites, toggleFavorite, isFavorite } = useFavorites();
+  const { toggleFavorite, isFavorite } = useFavorites();
 
   if (loading) {
     return (
@@ -200,11 +200,22 @@ const PokemonDetailPage = () => {
               </div>
             )}
 
-            {pokemon.generation && (
+            {(pokemon.generation || (pokemon.games && pokemon.games.length > 0)) && (
               <div className="detail-section">
                 <h3 className="detail-section-title">【出現シリーズ】</h3>
                 <div className="games-list">
-                  <div className="game-item">• {getGenerationLabel(pokemon.generation)}</div>
+                  {pokemon.generation && (
+                    <div className="game-item">• {getGenerationLabel(pokemon.generation)}</div>
+                  )}
+                  {pokemon.games && pokemon.games.length > 0 && (
+                    <div className="game-details">
+                      {pokemon.games.slice(0, 20).map((game, index) => (
+                        <div key={index} className="game-item">
+                          • {translateGameName(game)}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             )}

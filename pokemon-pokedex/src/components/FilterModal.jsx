@@ -153,7 +153,7 @@ const FilterModal = ({ isOpen, onClose, initialFilters, onApplyFilters }) => {
           
           {/* 出現シリーズフィルタ */}
           <div className="filter-section">
-            <h3>出現シリーズ</h3>
+            <h3>出現シリーズ（いずれかに該当）</h3>
             <div className="generation-list">
               {Object.entries(GENERATION_TRANSLATIONS).map(([key, value]) => (
                 <label key={key} className="generation-checkbox">
