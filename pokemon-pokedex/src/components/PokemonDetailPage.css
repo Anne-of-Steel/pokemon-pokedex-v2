@@ -301,12 +301,32 @@
   border-radius: 50%;
   padding: 10px;
   margin-bottom: 8px;
+  transition: all 0.2s;
+}
+
+.evolution-image.clickable {
+  cursor: pointer;
+}
+
+.evolution-image.clickable:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background: #f0f0f0;
 }
 
 .evolution-image img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.evolution-name.clickable {
+  transition: color 0.2s;
+}
+
+.evolution-name.clickable:hover {
+  color: #dc0a2d;
+  font-weight: bold;
 }
 
 .evolution-arrow {

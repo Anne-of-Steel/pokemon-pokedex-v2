@@ -94,13 +94,18 @@ export const fetchPokemonFullDetails = async (pokemonId) => {
     // 進化チェーンを取得
     let evolutionChain = [];
     if (species.evolution_chain) {
-      const evolutionRes = await axios.get(species.evolution_chain.url);
-      evolutionChain = await parseEvolutionChain(evolutionRes.data.chain);
+      try {
+        const evolutionRes = await axios.get(species.evolution_chain.url);
+        evolutionChain = await parseEvolutionChain(evolutionRes.data.chain);
+      } catch (error) {
+        console.error('進化チェーンの取得に失敗:', error);
+        // 進化チェーンの取得に失敗しても続行
+      }
     }
     
     // 登場シリーズを取得（日本語化）
-    const generation = species.generation.name;
-    const games = species.game_indices.map(game => game.version.name);
+    const generation = species.generation?.name || null;
+    const games = species.game_indices?.map(game => game.version.name) || [];
     
     return {
       id: pokemon.id,

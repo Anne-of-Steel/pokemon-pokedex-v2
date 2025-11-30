@@ -184,13 +184,28 @@ const PokemonDetailPage = () => {
                 <div className="evolution-chain">
                   {pokemon.evolutionChain.map((evolution, index) => (
                     <div key={index} className="evolution-pokemon">
-                      <div className="evolution-image">
+                      <div 
+                        className="evolution-image clickable"
+                        onClick={() => navigate(`/pokemon/${evolution.id}`, {
+                          state: location.state
+                        })}
+                        style={{ cursor: 'pointer' }}
+                        title={`${evolution.nameJa || evolution.name}の詳細を見る`}
+                      >
                         <img
                           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${evolution.id}.png`}
                           alt={evolution.nameJa || evolution.name}
                         />
                       </div>
-                      <span>{evolution.nameJa || evolution.name}</span>
+                      <span 
+                        className="evolution-name clickable"
+                        onClick={() => navigate(`/pokemon/${evolution.id}`, {
+                          state: location.state
+                        })}
+                        style={{ cursor: 'pointer', textDecoration: 'underline' }}
+                      >
+                        {evolution.nameJa || evolution.name}
+                      </span>
                       {index < pokemon.evolutionChain.length - 1 && (
                         <div className="evolution-arrow">→</div>
                       )}

@@ -107,11 +107,19 @@ export const usePokemonDetail = (pokemonId) => {
       try {
         setLoading(true);
         setError(null);
-        const data = await fetchPokemonFullDetails(pokemonId);
+        // pokemonIdを数値に変換（文字列の場合も対応）
+        const id = typeof pokemonId === 'string' ? parseInt(pokemonId, 10) : pokemonId;
+        if (isNaN(id) || id < 1 || id > 1025) {
+          throw new Error(`無効なポケモンID: ${pokemonId}`);
+        }
+        const data = await fetchPokemonFullDetails(id);
         setPokemon(data);
       } catch (err) {
-        setError('ポケモン詳細の取得に失敗しました');
-        console.error(err);
+        const errorMessage = err.response?.status === 404 
+          ? 'ポケモンが見つかりませんでした' 
+          : err.message || 'ポケモン詳細の取得に失敗しました';
+        setError(errorMessage);
+        console.error('ポケモン詳細取得エラー:', err);
       } finally {
         setLoading(false);
       }
